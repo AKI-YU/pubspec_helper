@@ -1,4 +1,4 @@
-# Project Name
+# Project Description
 
 The CLI tool is for pubspec health-checking. It helps to view the library content of pub.dev and Github. It could save time and give you a suggestion that you may take a look about your library if it becomes legacy code or un-maintained.
 
