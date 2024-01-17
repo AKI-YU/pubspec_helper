@@ -22,19 +22,45 @@ Future<void> getHttp(String libName) async {
   if (resp.statusCode == 200) {
     final html = parse(resp.body.toString());
 
-    var publisher =
-        html.getElementsByClassName("-pub-publisher").first.text.toString();
+    var publisher = "";
+    try {
+      html.getElementsByClassName("-pub-publisher").first.text.toString();
+    } catch (e) {
+      publisher = "unverified uploader";
+    }
+    var timeAgo = "";
+    try {
+      timeAgo = html.getElementsByClassName("-x-ago").first.text;
+    } catch (e) {
+      timeAgo = "unknown";
+    }
+    var likesCnt = "";
 
-    var timeAgo = html.getElementsByClassName("-x-ago").first.text;
-    var likesCnt = html.getElementById("likes-count")?.text.toString();
+    try {
+      likesCnt = html.getElementById("likes-count")?.text.toString() ?? "";
+    } catch (e) {
+      likesCnt = "unknown";
+    }
 
-    var badges =
-        html.getElementsByClassName("package-badge").first.text.toString();
+    var badges = "";
+    try {
+      badges =
+          html.getElementsByClassName("package-badge").first.text.toString();
+    } catch (e) {
+      badges = "unknown";
+    }
+    var issuesLink = "";
 
-    var issuesLink = html
-        .getElementsByTagName("a")
-        .firstWhere((e) => e.innerHtml.toString() == "View/report issues")
-        .attributes["href"];
+    try {
+      issuesLink = html
+              .getElementsByTagName("a")
+              .firstWhere((e) => e.innerHtml.toString() == "View/report issues")
+              .attributes["href"] ??
+          "";
+    } catch (e) {
+      issuesLink = "";
+    }
+
     writeAnsi("publisher: $publisher");
 
     var update = updateCheck(timeAgo);
@@ -49,15 +75,20 @@ Future<void> getHttp(String libName) async {
     writeAnsi("$likesCnt likes");
     writeAnsi(badges,
         c: badges.startsWith("in") ? AnsiColor.red : AnsiColor.green);
-    var issues = await getIssues(issuesLink.toString());
 
-    var issueCheck = openIssueCheck(issues);
-    writeAnsi(issues,
-        c: issueCheck == RuleType.normal
-            ? AnsiColor.green
-            : issueCheck == RuleType.warning
-                ? AnsiColor.yellow
-                : AnsiColor.red);
+    if (issuesLink == "") {
+      writeAnsi("No issues link", c: AnsiColor.yellow);
+    } else {
+      var issues = await getIssues(issuesLink.toString());
+
+      var issueCheck = openIssueCheck(issues);
+      writeAnsi(issues,
+          c: issueCheck == RuleType.normal
+              ? AnsiColor.green
+              : issueCheck == RuleType.warning
+                  ? AnsiColor.yellow
+                  : AnsiColor.red);
+    }
   } else {
     writeAnsi(
         "pub.dev is not responding for $libName and status code is ${resp.statusCode}",

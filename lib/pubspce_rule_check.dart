@@ -4,8 +4,14 @@ enum RuleType { normal, warning, error }
 
 RuleType updateCheck(String update,
     {int num1 = 6, int num2 = 12, DateType type = DateType.month}) {
+  if (update == "unknown") {
+    return RuleType.normal;
+  }
   if (type == DateType.month) {
-    var date = int.parse(update.split(" ")[0]);
+    var date = 0;
+    try {
+      date = int.parse(update.split(" ")[0]);
+    } catch (_) {}
     if (update.contains("month")) {
       if (date <= num1) {
         return RuleType.normal;
@@ -22,7 +28,10 @@ RuleType updateCheck(String update,
           num1: num1, num2: num2, type: DateType.month);
     }
   } else if (type == DateType.day) {
-    var date = int.parse(update.split(" ")[0]);
+    var date = 0;
+    try {
+      date = int.parse(update.split(" ")[0]);
+    } catch (_) {}
     if (update.contains("day")) {
       if (date < num1) {
         return RuleType.normal;
@@ -39,7 +48,10 @@ RuleType updateCheck(String update,
           num1: num1, num2: num2, type: DateType.day);
     }
   } else {
-    var date = int.parse(update.split(" ")[0]);
+    var date = 0;
+    try {
+      date = int.parse(update.split(" ")[0]);
+    } catch (_) {}
     if (update.contains("year")) {
       if (date < num1) {
         return RuleType.normal;
@@ -61,7 +73,10 @@ RuleType updateCheck(String update,
 }
 
 RuleType openIssueCheck(String issue, {int num1 = 20, int num2 = 50}) {
-  var issueCnt = int.parse(issue.split(" ")[0]);
+  var issueCnt = 0;
+  try {
+    issueCnt = int.parse(issue.split(" ")[0]);
+  } catch (_) {}
   if (issueCnt < num1) {
     return RuleType.normal;
   } else if (issueCnt < num2) {

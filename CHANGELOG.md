@@ -1,3 +1,18 @@
+## 1.0.7
+ 
+- Sometimes there is no number in parser
+
+## 1.0.6
+ 
+- Some libs are no repository link
+
+## 1.0.5
+ 
+- Try Catch proof is anything parse error
+
+## 1.0.4
+ 
+- Regex is amazing, but still have bugs, I removed it
 
 ## 1.0.3
  

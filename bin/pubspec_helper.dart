@@ -33,21 +33,34 @@ void main(List<String> arguments) async {
     exit(0);
   }
   //get dependencies including version and name
-  RegExp exp = RegExp(
-      r"(dependencies:(?:\n\s+(?:(?:#.*\n)?\s+(\w+):\s+(\^\d+\.\d+\.\d+)))+)");
-  var rtn =
-      exp.stringMatch(content).toString().replaceAll("dependencies:\n", "");
+
+  bool isStart = false;
+  List<String> rtn = [];
+  for (int i = 0; i < content.split("\n").length; i++) {
+    if (content.split("\n")[i].trim().startsWith("dependencies")) {
+      isStart = true;
+      continue;
+    }
+    if (isStart &&
+        content.split("\n")[i].trim().split(":").length == 2 &&
+        content.split("\n")[i].trim().split(":")[1].contains(".")) {
+      rtn.add(content.split("\n")[i].trim().split(":")[0].trim());
+    }
+
+    if (isStart &&
+        content.split("\n")[i] != "" &&
+        !content.split("\n")[i].startsWith("  ")) {
+      isStart = false;
+    }
+  }
 
   if (rtn.isEmpty) {
     writeAnsi("Could not find dependencies in pubspec.yaml", c: AnsiColor.red);
     exit(0);
   }
 
-  for (String e in rtn.split("\n")) {
-    if (e.trim().startsWith("#") ||
-        e.trim().isEmpty ||
-        e.trim().split(":").length < 2 ||
-        !e.trim().split(":")[1].contains(".")) {
+  for (String e in rtn) {
+    if (e.trim().startsWith("#") || e.trim().isEmpty) {
       continue;
     }
     await getHttp(e.split(":")[0].trim());

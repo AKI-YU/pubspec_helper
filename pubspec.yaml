@@ -1,6 +1,6 @@
 name: pubspec_helper
 description: A pubspec analysis and health check command-line application made by AKI.
-version: 1.0.3
+version: 1.0.7
 homepage: https://github.com/AKI-YU/pubspec_helper
 
 environment:
