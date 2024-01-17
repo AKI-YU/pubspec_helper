@@ -1,0 +1,21 @@
+name: pubspec_check
+description: A pubspec analysis and health check command-line application made by AKI.
+version: 1.0.0
+homepage: https://github.com/AKI-YU/pubspec_check
+
+environment:
+  sdk: ^3.2.3
+
+dependencies:
+  args: ^2.4.2
+  html: ^0.15.4
+  http: ^1.1.2
+  lints: ^2.1.0
+
+dev_dependencies:
+  test: ^1.24.0
+
+topics:
+  - pubspec
+  - cli
+  - termainal tool
