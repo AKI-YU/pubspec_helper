@@ -42,8 +42,12 @@ void main(List<String> arguments) async {
     writeAnsi("Could not find dependencies in pubspec.yaml", c: AnsiColor.red);
     exit(0);
   }
+
   for (String e in rtn.split("\n")) {
-    if (e.trim().startsWith("#")) {
+    if (e.trim().startsWith("#") ||
+        e.trim().isEmpty ||
+        e.trim().split(":").length < 2 ||
+        !e.trim().split(":")[1].contains(".")) {
       continue;
     }
     await getHttp(e.split(":")[0].trim());

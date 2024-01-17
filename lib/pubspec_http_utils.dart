@@ -59,7 +59,9 @@ Future<void> getHttp(String libName) async {
                 ? AnsiColor.yellow
                 : AnsiColor.red);
   } else {
-    writeAnsi("pub.dev is not responding", c: AnsiColor.red);
+    writeAnsi(
+        "pub.dev is not responding for $libName and status code is ${resp.statusCode}",
+        c: AnsiColor.red);
   }
 }
 
