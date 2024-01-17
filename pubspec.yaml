@@ -1,7 +1,7 @@
-name: pubspec_check
+name: pubspec_helper
 description: A pubspec analysis and health check command-line application made by AKI.
 version: 1.0.0
-homepage: https://github.com/AKI-YU/pubspec_check
+homepage: https://github.com/AKI-YU/pubspec_helper
 
 environment:
   sdk: ^3.2.3
@@ -18,4 +18,4 @@ dev_dependencies:
 topics:
   - pubspec
   - cli
-  - termainal tool
+  - termainal

@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:html/parser.dart';
 import 'package:http/io_client.dart';
-import 'package:pubspec_check/pubspce_rule_check.dart';
-import 'package:pubspec_check/pubspec_ansi_utils.dart';
+import 'package:pubspec_helper/pubspce_rule_check.dart';
+import 'package:pubspec_helper/pubspec_ansi_utils.dart';
 
 IOClient baseClient() {
   HttpClient httpClient = HttpClient();

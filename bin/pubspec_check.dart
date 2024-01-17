@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:pubspec_check/pubspec_ansi_utils.dart';
-import 'package:pubspec_check/pubspec_http_utils.dart';
+import 'package:pubspec_helper/pubspec_ansi_utils.dart';
+import 'package:pubspec_helper/pubspec_http_utils.dart';
 
 const lineNumber = 'line-number';
 

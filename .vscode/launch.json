@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "pubspec_check",
+            "name": "pubspec_helper",
             "request": "launch",
             "type": "dart",
             "args": []

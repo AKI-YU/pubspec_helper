@@ -3,7 +3,7 @@
 The CLI tool is for pubspec health-checking. It helps to view the library content of pub.dev and Github. It could save time and give you a suggestion that you may take a look about your library if it becomes legacy code or un-maintained.
 
 
-<img src="https://raw.githubusercontent.com/AKI-YU/pubspec_check/main/screenshot.png?token=GHSAT0AAAAAACMIMOQXKUQJHLE4QWCKLKTQZNHJVNQ" alt="" />
+<img src="https://raw.githubusercontent.com/AKI-YU/pubspec_helper/main/screenshot.png?token=GHSAT0AAAAAACMIMOQXKUQJHLE4QWCKLKTQZNHJVNQ" alt="" />
 
 ## Features
 
@@ -16,21 +16,21 @@ The CLI tool is for pubspec health-checking. It helps to view the library conten
 Install dependencies using the following command:
 
 ```bash
-flutter pub add pubspec_check
+flutter pub add pubspec_helper
 ```
 
 ## Usage
 Run the following command in the command line:
 
 ```bash
-dart run pubspec_check
+dart run pubspec_helper
 ```
 
 or export to txt file
 
 
 ```bash
-dart run pubspec_check > 1.txt
+dart run pubspec_helper > 1.txt
 ```
 
 ## Contributing
