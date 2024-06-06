@@ -1,3 +1,7 @@
+## 1.0.8
+ 
+- miner upgrade 
+
 ## 1.0.7
  
 - Sometimes there is no number in parser
